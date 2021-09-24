@@ -12,13 +12,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import constants.Web;
 
 public class SauseTestDemo {
-	
+
 	public static void main(String[] args) throws Exception {
 		MutableCapabilities sauceOptions = new MutableCapabilities();
-		sauceOptions.setCapability("username", "oauth-lenin4all-3c072");
-		sauceOptions.setCapability("access_key", "b31537e7-7efa-4b55-81c7-57deb6147965");
+		sauceOptions.setCapability("username", System.getProperty("sauce.user.name"));
+		sauceOptions.setCapability("access_key", System.getProperty("sauce.access.key"));
 		sauceOptions.setCapability("name", "google test");
-		//sauceOptions.setCapability("browserVersion", "latest");
+		// sauceOptions.setCapability("browserVersion", "latest");
 
 		ChromeOptions options = new ChromeOptions();
 		options.setCapability("platformName", "macOS 11.00");
@@ -26,7 +26,7 @@ public class SauseTestDemo {
 		options.setCapability("sauce:options", sauceOptions);
 		URL url = new URL("https://ondemand.us-west-1.saucelabs.com/wd/hub");
 		RemoteWebDriver driver = new RemoteWebDriver(url, options);
-		
+
 		driver.get(Web.GOOGLE);
 		System.out.println(driver.getTitle());
 		driver.findElement(By.name("q")).sendKeys("Automation step by step");
@@ -36,7 +36,7 @@ public class SauseTestDemo {
 		driver.quit();
 		System.out.println("Tests completed");
 	}
-	
+
 	public static void main2(String[] args) throws MalformedURLException {
 		MutableCapabilities sauceOptions = new MutableCapabilities();
 		sauceOptions.setCapability("name", "google test");
@@ -44,9 +44,9 @@ public class SauseTestDemo {
 
 		ChromeOptions options = new ChromeOptions();
 		options.setCapability("sauce:options", sauceOptions);
-		URL url = new URL("https://oauth-lenin4all-3c072:b31537e7-7efa-4b55-81c7-57deb6147965@ondemand.us-west-1.saucelabs.com:443/wd/hub");
+		URL url = new URL(System.getProperty("sauce.url"));
 		RemoteWebDriver driver = new RemoteWebDriver(url, options);
-		
+
 		driver.get(Web.GOOGLE);
 		System.out.println(driver.getTitle());
 		driver.findElement(By.name("q")).sendKeys("Automation step by step");

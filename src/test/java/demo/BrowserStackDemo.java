@@ -9,8 +9,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class BrowserStackDemo {
 
 	
-		public static final String AUTOMATE_USERNAME = "leninkumarkoppoj_mbHU7W";
-		  public static final String AUTOMATE_ACCESS_KEY = "1ztc7ApJiojXuxqqNqNj";
+		public static final String AUTOMATE_USERNAME = System.getProperty("browser.stack.user.name");
+		  public static final String AUTOMATE_ACCESS_KEY = System.getProperty("browser.stack.access.key");
 		  public static final String URL = "https://" + AUTOMATE_USERNAME + ":" + AUTOMATE_ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
 		  public static void main(String[] args) throws Exception {
 		    DesiredCapabilities caps = new DesiredCapabilities();
